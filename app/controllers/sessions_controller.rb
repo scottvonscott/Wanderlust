@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
     end
 
     def new
+        @user = User.new
     end
 
     def create
@@ -11,13 +12,14 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             redirect_to user_path(user)
         else
-            # flash[:message] = "Invalid credentials. Please try again."
-            redirect_to '/login'
-            redirect_to '/login', alert: "Invalid credentials. Please try again."
+            redirect_to '/login', alert: "Invalid login credentials. Please try again."
         end
     end
 
     def destroy
+        session.delete :user_id
+        redirect_to root_path
     end
     
 end
+

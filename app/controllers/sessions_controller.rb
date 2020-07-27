@@ -16,4 +16,8 @@ class SessionsController < ApplicationController
             redirect_to '/login', alert: "Invalid credentials. Please try again."
         end
     end
+
+    def destroy
+    end
+    
 end

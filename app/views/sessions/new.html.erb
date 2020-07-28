@@ -1,8 +1,16 @@
 <h1> Login </h1>
-<%= form_with(url: '/login')do |f| %>
-    <%= f.label :email%><br>
-    <%= f.email_field :email%><br><br>
-    <%= f.label :password%><br>
-    <%= f.password_field :password %>
-    <%= f.submit "Sign In" %>
-  <% end %>
+
+<% if logged_in? %>
+  <h4> You're already logged in! </h4>
+  <h4><%= link_to "Back to My Profile", user_path(current_user) %></h4>
+
+<% else %>
+
+  <%= form_with(url: '/login')do |f| %>
+      <%= f.label :email%><br>
+      <%= f.email_field :email%><br><br>
+      <%= f.label :password%><br>
+      <%= f.password_field :password %>
+      <%= f.submit "Sign In" %>
+<% end %>
+<% end %>

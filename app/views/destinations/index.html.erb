@@ -1,0 +1,7 @@
+<h1> All Destinations! </h1>
+
+<% @destinations.each do |d| %>
+    <h2><%=link_to "#{d.city}, #{d.country}", destination_path(d) %></h2>
+    <p>Continent: <%= d.continent %></pr><br>
+    <p>Primary Language: <%= d.primary_language %></p>
+    <% end %>

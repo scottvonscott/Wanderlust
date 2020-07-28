@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :scheduled_attractions
   root 'sessions#welcome'
 
   get '/login', to: 'sessions#new'

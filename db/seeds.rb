@@ -33,6 +33,7 @@ Destination.create(city: "Vienna", country: "Austria", continent: "Europe",prima
 
 Trip.create(title: "My trip to Paris", days_duration: 5, user_id: 1)
 Itinerary.create(day_of_trip: 1, date: Time.now, trip_id: 1)
-Attraction.create(name: "The Lourve", description: "All the Art", destination_id: 1, itinerary_id: 1)
+Attraction.create(name: "The Lourve", description: "All the Art", destination_id: 1)
+ScheduledAttraction.create(time_of_day: "Morning", itinerary_id: 1, attraction_id: 1)
 Comment.create(body: "I waited in line for six hours!", user_id: 1, attraction_id: 1)
 

@@ -10,17 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_214642) do
+ActiveRecord::Schema.define(version: 2020_07_28_204548) do
 
   create_table "attractions", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.integer "destination_id", null: false
-    t.integer "itinerary_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["destination_id"], name: "index_attractions_on_destination_id"
-    t.index ["itinerary_id"], name: "index_attractions_on_itinerary_id"
   end
 
   create_table "bookmarks", force: :cascade do |t|
@@ -60,6 +58,16 @@ ActiveRecord::Schema.define(version: 2020_07_27_214642) do
     t.index ["trip_id"], name: "index_itineraries_on_trip_id"
   end
 
+  create_table "scheduled_attractions", force: :cascade do |t|
+    t.string "time_of_day"
+    t.integer "attraction_id", null: false
+    t.integer "itinerary_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["attraction_id"], name: "index_scheduled_attractions_on_attraction_id"
+    t.index ["itinerary_id"], name: "index_scheduled_attractions_on_itinerary_id"
+  end
+
   create_table "trips", force: :cascade do |t|
     t.string "title"
     t.integer "days_duration"
@@ -79,11 +87,12 @@ ActiveRecord::Schema.define(version: 2020_07_27_214642) do
   end
 
   add_foreign_key "attractions", "destinations"
-  add_foreign_key "attractions", "itineraries"
   add_foreign_key "bookmarks", "attractions"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "attractions"
   add_foreign_key "comments", "users"
   add_foreign_key "itineraries", "trips"
+  add_foreign_key "scheduled_attractions", "attractions"
+  add_foreign_key "scheduled_attractions", "itineraries"
   add_foreign_key "trips", "users"
 end

@@ -4,7 +4,6 @@ class CreateAttractions < ActiveRecord::Migration[6.0]
       t.string :name
       t.text :description
       t.references :destination, null: false, foreign_key: true
-      t.references :itinerary, null: false, foreign_key: true
 
       t.timestamps
     end

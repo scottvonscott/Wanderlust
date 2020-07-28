@@ -1,0 +1,2 @@
+class ScheduledAttractionsController < ApplicationController
+end

@@ -3,8 +3,8 @@ class Trip < ApplicationRecord
   has_many :itineraries
   has_many :destations, through: :itineraries
 
-  validates :title, presense: true
-  validates :days_duration, numericality: {only_integer: true}
-  validates :day_of_trip, numericality: { greater_than: 0 }
-
+  validates :title, presence: true
+  validates :days_duration, numericality: true
+  validates :days_duration, numericality: {greater_than: 0, message: "must be at least a day trip!"}
+# this validation isnt working
 end

@@ -31,3 +31,8 @@ Destination.create(city: "Venice", country: "Italy", continent: "Europe",primary
 Destination.create(city: "Vienna", country: "Austria", continent: "Europe",primary_language: "German")
 
 
+Trip.create(title: "My trip to Paris", days_duration: 5, user_id: 1)
+Itinerary.create(day_of_trip: 1, date: Time.now, trip_id: 1)
+Attraction.create(name: "The Lourve", description: "All the Art", destination_id: 1, itinerary_id: 1)
+
+

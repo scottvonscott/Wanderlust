@@ -23,5 +23,6 @@ class DestinationsController < ApplicationController
     end
 
     def set_destination
+        @destination = Destination.find_by(id: params[:id])
     end
 end

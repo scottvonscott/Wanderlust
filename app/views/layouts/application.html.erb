@@ -10,7 +10,13 @@
   </head>
 
   <body>
+
     <div class="wrapper">
+    <%= link_to "All Trips", trips_path %> |
+    <%= link_to "All Itineraries", itineraries_path %> |
+    <%= link_to "All Destinations", destinations_path %> |
+    <%= link_to "All Attractions", attractions_path %> |
+    <%= link_to "My Profile", user_path(current_user) %><br><br>
     <%= yield %>
     </div>
   </body>

@@ -13,11 +13,13 @@
 
     <div class="wrapper">
     <% if logged_in?%>
-    <%= link_to "My Profile", user_path(current_user) %> |
+    <h5>Logged in as <%=current_user.full_name.upcase %><br>
+      <%= link_to "Log Out", logout_path, method: 'delete' %></h5><br><br>
+    <h4><%= link_to "My Profile", user_path(current_user) %> |
     <%= link_to "All Trips", trips_path %> |
     <%= link_to "All Itineraries", itineraries_path %> |
     <%= link_to "All Destinations", destinations_path %> |
-    <%= link_to "All Attractions", attractions_path %>
+    <%= link_to "All Attractions", attractions_path %></h4>
     
     <% else %>
       <% end %><br><br>
@@ -25,11 +27,7 @@
     
   </body>
   <footer class="branding">
-      <% if logged_in?%>
-      Logged in as <%=current_user.first_name.upcase %><br>
-      <%= link_to "Log Out", logout_path, method: 'delete' %></p>
-      <% else %>
-      <% end %>
+     
         <small>&copy; 2020 <strong>Wanderlust</strong></small>
       </footer>
       </div>

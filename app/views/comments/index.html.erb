@@ -1,1 +1,8 @@
 <h1> All Comments </h1>
+
+<% @comments.each do |c| %>
+    <h3>Attraction: <%= c.attraction.name %></h3>
+       <p> Posted by <%= c.user.full_name %></p><br>
+       <p><%= c.body %></p>
+      
+       <% end %> 

@@ -79,6 +79,12 @@
       line_height: 36px;
       text-align: center;
     }
+
+    h5 {
+      font-size: 14px;
+      line_height: 36px;
+      text-align: right;
+    }
   
     p {
       margin-bottom: 18px;

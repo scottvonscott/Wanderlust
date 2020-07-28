@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/users/:id', to: 'users#show', as: 'user'
 
-  resources :bookmarks
   resources :destinations
   resources :attractions
   resources :itineraries

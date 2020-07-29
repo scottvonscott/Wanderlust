@@ -6,12 +6,17 @@ class ItinerariesController < ApplicationController
     end
 
     def new
+        @itinerary = Itinerary.new
     end
 
     def create
-    end
+        @itinerary = Itinerary.new(itinerary_params)
+        if @itinerary.save
+            redirect_to itinerary_path(@itinerary)
+        else
+            render :new
+        end
 
-    def show
     end
 
     def destroy
@@ -20,8 +25,11 @@ class ItinerariesController < ApplicationController
     private
 
     def itinerary_params
+        params.require(:itinerary).permit(:day_of_trip, :date)
     end
 
     def set_itinerary
+        @itinerary = Itinerary.find(params[:id])
     end
+
 end

@@ -6,9 +6,17 @@ class TripsController < ApplicationController
     end
 
     def new
+        @trip = Trip.new
     end
 
     def create
+        @trip = Trip.new(trip_params)
+        if @trip.save
+            redirect_to trip_path(@trip)
+        else
+            render :new
+        end
+
     end
 
     def destroy
@@ -17,9 +25,11 @@ class TripsController < ApplicationController
     private
 
     def trip_params
+        params.require(:trip).permit(:title, :days_duration)
     end
 
     def set_trip
+        @trip = Trip.find(params[:id])
     end
 
 

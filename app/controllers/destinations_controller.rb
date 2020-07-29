@@ -6,9 +6,16 @@ class DestinationsController < ApplicationController
     end
 
     def new
+        @destination = Destination.new
     end
 
     def create
+        @destination = Destination.new(destination_params)
+        if @destination.save
+            redirect_to destination_path(@destination)
+        else
+            render :new
+        end
     end
 
     def show
@@ -20,6 +27,7 @@ class DestinationsController < ApplicationController
     private
 
     def destination_params
+        params.require(:destination).permit(:city, :country, :continent, :primary_language)
     end
 
     def set_destination

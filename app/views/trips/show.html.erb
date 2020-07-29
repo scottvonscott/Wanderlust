@@ -2,3 +2,7 @@
 <h3> Duration: <%= @trip.days_duration %> days</h3>
 
 <h3> Trip Itineraries: </h3>
+<p> <% @trip.itineraries.each do |i| %>
+   Day <%= i.day_of_trip %>
+   </p>
+   <% end %>

@@ -10,9 +10,9 @@ class TripsController < ApplicationController
     end
 
     def create
-        
         @trip = current_user.trips.build(trip_params)
         if @trip.save
+            @trip.days_to_plan
             redirect_to trip_path(@trip)
         else
             render :new
@@ -21,6 +21,7 @@ class TripsController < ApplicationController
     end
 
     def show
+        # byebug
     end
 
     def destroy

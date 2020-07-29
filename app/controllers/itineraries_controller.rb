@@ -16,11 +16,16 @@ class ItinerariesController < ApplicationController
         else
             render :new
         end
+    end
 
+    def show
+        # byebug
     end
 
     def destroy
     end
+
+
 
     private
 
@@ -29,6 +34,7 @@ class ItinerariesController < ApplicationController
     end
 
     def set_itinerary
+        
         @itinerary = Itinerary.find(params[:id])
     end
 

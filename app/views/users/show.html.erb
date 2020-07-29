@@ -4,6 +4,10 @@
 
 <h3> Your Wishlist </h3>
 <h3> Your Trips </h3>
+<p> <% @user.trips.each do |t| %>
+    <%= link_to t.title, trip_path(t) %><br>
+    <% end %>
+
 <%=link_to "Create a New Trip", new_trip_path %>
 <h3> Your Itineraries </h3>
 <%=link_to "Create a New Itinerary", new_itinerary_path %>

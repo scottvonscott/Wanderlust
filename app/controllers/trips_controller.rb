@@ -21,7 +21,7 @@ class TripsController < ApplicationController
     end
 
     def show
-        # byebug
+
     end
 
     def destroy

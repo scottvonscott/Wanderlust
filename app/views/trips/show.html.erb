@@ -3,6 +3,7 @@
 
 <h3> Trip Itineraries: </h3>
 <p> <% @trip.itineraries.each do |i| %>
-   Day <%= i.day_of_trip %>
+   <%= link_to i.day, trip_itinerary_path(i.trip, i) %>
+                  
    </p>
    <% end %>

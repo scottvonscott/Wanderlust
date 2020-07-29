@@ -1,5 +1,5 @@
 class DestinationsController < ApplicationController
-    before_action :set_destination
+    before_action :set_destination, only: [:show, :update]
 
     def index
         @destinations = Destination.all

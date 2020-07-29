@@ -1,0 +1,7 @@
+<%= form_for(@trip) do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br>
+    <%= f.label :days_duration, "Trip Duration (Number of Days):" %>
+    <%= f.number_field :days_duration, min: 1 %>
+    <%= f.submit %>
+    <% end %>

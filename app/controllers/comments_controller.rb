@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-    before_action :set_comment
+    before_action :set_comment, only: [:show, :update]
 
     def index
         @comments = Comment.all

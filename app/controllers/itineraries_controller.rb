@@ -1,5 +1,5 @@
 class ItinerariesController < ApplicationController
-    before_action :set_itinerary
+    before_action :set_itinerary, only: [:show, :update]
 
     def index
         @itineraries = Itinerary.all

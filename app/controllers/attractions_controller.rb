@@ -1,5 +1,5 @@
 class AttractionsController < ApplicationController
-    before_action :set_attraction
+    before_action :set_attraction, only: [:show, :update]
 
    
     def index

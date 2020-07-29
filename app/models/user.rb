@@ -8,8 +8,6 @@ class User < ApplicationRecord
 
     validates :first_name, :last_name, :email, presence: true
     validates :email, uniqueness: true
-    validates :password, confirmation: true
-    # validates :password_confirmation, presence: true
 
     def self.create_from_omniauth(auth)
         User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|

@@ -1,35 +1,105 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Wanderlust</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <div class='wrapper'>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <% if logged_in?%>
+  <h5>
+        <div class="dropdown">
+        <button class="dropbtn"><%=current_user.full_name.upcase %></button>
+        <div class="dropdown-content">
+        <%= link_to "My Profile", user_path(current_user) %>
+        <%= link_to "Log Out", logout_path, method: 'delete' %>
+          </div>
+        </div>
+        </h5>
+      <% else %>
+      <h5>
+      <div class="dropdown">
+        <button class="dropbtn">Login</button>
+        <div class="dropdown-content">
+        <%= link_to "Wanderlust Login", login_path %>
+        <%= button_to "Google Login", '/auth/google_oauth2' %>
+          </div>
+        </div>
+        </h5>
+      <% end %>
+
+  <h1>Wanderlust</h1>
+      <h2></h2>
+      <h4>
+          <%= link_to "Trips", trips_path %> |
+          <%= link_to "Itineraries", itineraries_path %> |
+          <%= link_to "Destinations", destinations_path %> |
+          <%= link_to "Attractions", attractions_path %>
+        </h4>
+
+
+        <!-- Load font awesome icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <!-- The navigation menu -->
+
+        <h4>
+        <div class="navbar">
+          <a href="#home">Home</a>
+          <div class="subnav">
+            <button class="subnavbtn">About <i class="fa fa-caret-down"></i></button>
+            <div class="subnav-content">
+              <a href="#company">Company</a>
+              <a href="#team">Team</a>
+              <a href="#careers">Careers</a>
+            </div>
+          </div>
+          <div class="subnav">
+            <button class="subnavbtn">Services <i class="fa fa-caret-down"></i></button>
+            <div class="subnav-content">
+              <a href="#bring">Bring</a>
+              <a href="#deliver">Deliver</a>
+              <a href="#package">Package</a>
+              <a href="#express">Express</a>
+            </div>
+          </div>
+          <div class="subnav">
+            <button class="subnavbtn">Partners <i class="fa fa-caret-down"></i></button>
+            <div class="subnav-content">
+              <a href="#link1">Link 1</a>
+              <a href="#link2">Link 2</a>
+              <a href="#link3">Link 3</a>
+              <a href="#link4">Link 4</a>
+            </div>
+          </div>
+          <a href="#contact">Contact</a>
+        </div> 
+
+        </h4>
+
+
+
+
+
+    
+
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </div>
   </head>
 
   <body>
 
-    <div class="wrapper">
-    <%= button_to "Log in with Google", '/auth/google_oauth2' %>
-    <% if logged_in?%>
-    <h5>Logged in as <%=current_user.full_name.upcase %><br>
-      <%= link_to "Log Out", logout_path, method: 'delete' %></h5><br><br>
-    <h4><%= link_to "My Profile", user_path(current_user) %> |
-    <%= link_to "All Trips", trips_path %> |
-    <%= link_to "All Itineraries", itineraries_path %> |
-    <%= link_to "All Destinations", destinations_path %> |
-    <%= link_to "All Attractions", attractions_path %></h4>
-    
-    <% else %>
-      <% end %><br><br>
+ 
+
+
     <%= yield %>
     
   </body>
   <footer class="branding">
      
         <small>&copy; 2020 <strong>Wanderlust</strong></small>
+
+        
       </footer>
       </div>
 </html>

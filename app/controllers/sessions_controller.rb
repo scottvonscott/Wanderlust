@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
         end
     end
 
-    def omniauth  #log users in with omniauth
+    def omniauth  
        
         user = User.create_from_omniauth(auth)
         if user.valid?

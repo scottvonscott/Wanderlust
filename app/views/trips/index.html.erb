@@ -1,7 +1,9 @@
 <h1> All Trips </h1>
+<br>
+<h2></h2>
 
 
 
 <% @trips.each do |t| %>
-  <%= t.title %>
+  <%= link_to t.title, trip_path(t) %>
     <% end %>

@@ -1,6 +1,7 @@
 <h1> <%=@attraction.name %> </h1>
 
 <h4> <%= link_to @attraction.location, destination_path(@attraction.destination) %> </h4><br>
+<h2></h2>
 
 <p> Description: <br><br> 
 <i><%= @attraction.description %></i> </p>
@@ -9,8 +10,8 @@
 <p> Comments: </p> <br>
 <% if !@attraction.comments.nil? %>
 <% @attraction.comments.each do |c| %>
-    <p> - Posted by <%= c.user.full_name%> - </p>
     <i><%= c.body %></i>
+    <p> - Posted By <%= c.user.full_name%></p>
     <% end %>
 <% end %>
 

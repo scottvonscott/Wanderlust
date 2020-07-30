@@ -1,2 +1,5 @@
-<h1><%= @comment.user.full_name %> comments on <%=@comment.attraction.name %></h1><br>
+<h3><%=@comment.attraction.name %></h3><br>
+<h2></h2>
+
 <p><i> <%= @comment.body %></i></p>
+<p> - Posted By <%= @comment.user.full_name %> 

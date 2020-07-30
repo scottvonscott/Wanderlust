@@ -12,9 +12,10 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/users/:id', to: 'users#show', as: 'user'
 
+
   #gonna need nested here
   resources :trips do
-    resources :itineraries, only: [:index, :show]
+    resources :itineraries, only: [:show]
   end
   resources :itineraries do 
     resources :scheduled_attractions, only: [:new, :create, :show, :edit]
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create, :show, :edit]
   end
 
-  # resources :comments
+ 
   # resources :scheduled_attractions
  
   

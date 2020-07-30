@@ -4,20 +4,13 @@ class Attraction < ApplicationRecord
   has_many :bookmarks
   has_many :scheduled_attractions
   has_many :itineraries, through: :scheduled_attractions
-  accepts_nested_attributes_for :destination
-
   validates :name, :description, presence: true
+  validates :name, uniqueness: true
+  accepts_nested_attributes_for :destination, reject_if: :all_blank
 
-  def day_order
-    self.sort_by do |t|
-      t.time_of_day
-    end
-  end
 
   def location
     "#{self.destination.city}, #{self.destination.country}"
 end
 
-
-  
 end

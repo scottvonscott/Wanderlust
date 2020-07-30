@@ -3,18 +3,27 @@
 <h2></h2>
 
 <%= form_for [@itinerary, @scheduled_attraction] do |f| %>
-    <%= f.label :time_of_day %><br>
+    <strong><%= f.label :time_of_day, "Scheduled Time of Day:" %></strong><br>
     <%= f.text_field :time_of_day %><br><br>
-    
+
     <%= f.hidden_field :itinerary_id, value: @itinerary.id %>
 
-    <%= f.fields_for :attraction do |a| %>
-        <%= a.label :name %><br>
-        <%= a.text_field :name %><br>
-        <%= a.label :description %><br>
-        <%= a.text_area :description %><br>
 
+    <strong><%= f.label :attraction, "Choose an Attraction:" %></strong<br><br>
+    <%= f.collection_select :attraction_id, Attraction.all, :id, :name, prompt: true %><br>
+
+    <%= f.fields_for :attraction do |a| %><br>
+        <strong><p> - Or Enter a New Attraction</p></strong>
+        <%= a.label :name, "Attraction Name:" %><br>
+        <%= a.text_field :name %><br>
+        <%= a.label :description, "Attraction Description:" %><br>
+        <%= a.text_area :description %><br><br>
+
+        <strong><%= a.label :destination, "Choose a Destination:" %></strong<br><br>
+    <%= a.collection_select :destination_id, Destination.all, :id, :city, prompt: true %><br><br>
+    
         <%= a.fields_for :destination do |d| %>
+            <strong><p> - Or Enter a New Destination</p></strong>
             <%= d.label :city %><br>
             <%= d.text_field :city %><br>
             <%= d.label :country %><br>

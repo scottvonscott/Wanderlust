@@ -1,11 +1,16 @@
-<h1><%= @itinerary.trip.title %><br>
- <%= @itinerary.day%> </h1>
+<h3><%= @itinerary.trip.title %></h3><br>
+ <h1><%= @itinerary.day%></h1> <br>
+ <h2></h2>
+ <h4><%= link_to "Add New Attraction", new_itinerary_scheduled_attraction_path(@itinerary) %></h4>
 
 
 
-<h3> Planned Attractions </h3>
-
+<strong><h3> Planned Attractions </h3></strong>
+<br>
 <% @itinerary.scheduled_attractions.each do |a| %>
-    <%= a.attraction.name %>
+  
+   <p> <%= a.time_of_day %>: <%= link_to a.attraction.name, attraction_path(a.attraction) %> - <%= a.attraction.destination.city %>, <%= a.attraction.destination.country %></p><br>
+    
     <% end %>
-<%= link_to "Add New Attraction", new_itinerary_scheduled_attraction_path(@itinerary) %>
+    
+ 

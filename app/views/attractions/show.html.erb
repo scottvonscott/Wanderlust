@@ -1,0 +1,6 @@
+<h1> <%=@attraction.name %> </h1>
+
+<h4> <%= link_to @attraction.location, destination_path(@attraction.destination) %> </h4><br>
+
+<p> Description: <br><br> 
+<%= @attraction.description %> </p>

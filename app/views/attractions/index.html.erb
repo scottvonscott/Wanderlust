@@ -1,1 +1,7 @@
 <h1> All Attractions </h1>
+
+<% @attractions.each do |a| %>
+  
+    <p><%= link_to a.name, attraction_path(a) %> - <%= link_to a.location, destination_path(a.destination) %></p><br>
+     
+     <% end %>

@@ -1,1 +1,10 @@
 <h1> <%= @destination.city %>, <%= @destination.country %> </h1>
+
+<h4> <%= @destination.continent %> </h4>
+<h4> Primary Language Spoken: <%= @destination.primary_language %> </h4>
+
+<h3> Attractions in <%= @destination.city %>: </h3>
+<h3> <% @destination.attractions.each do |a| %></h3>
+    <%= link_to a.name, attraction_path(a) %><br>
+    <% end %>
+

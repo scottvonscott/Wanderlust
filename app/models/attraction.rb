@@ -6,7 +6,7 @@ class Attraction < ApplicationRecord
   has_many :itineraries, through: :scheduled_attractions
   validates :name, :description, presence: true
   validates :name, uniqueness: true
-  accepts_nested_attributes_for :destination, reject_if: :all_blank
+  accepts_nested_attributes_for :destination, reject_if: proc {|attributes| attributes['city'].blank?}
 
 
   def location

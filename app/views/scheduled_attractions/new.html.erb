@@ -22,7 +22,7 @@
         <strong><%= a.label :destination, "Choose a Destination:" %></strong<br><br>
     <%= a.collection_select :destination_id, Destination.all, :id, :city, prompt: true %><br><br>
     
-        <%= a.fields_for :destination do |d| %>
+   <%= a.fields_for :destination do |d| %>
             <strong><p> - Or Enter a New Destination</p></strong>
             <%= d.label :city %><br>
             <%= d.text_field :city %><br>

@@ -1,20 +1,20 @@
 class CommentsController < ApplicationController
     before_action :set_comment, only: [:show, :update]
-    before_action :set_attraction, only: [:create]
+    before_action :set_attraction, only: [:new, :create]
 
     def index
         @comments = Comment.all
     end
 
     def new
-        if params[:attraction_id] && @attraction = Attraction.find_by(id: params[:attraction_id])
+        if params[:attraction_id]
             @comment = @attraction.comments.build
         end
     end
 
     def create
+        byebug
         @comment = current_user.comments.build(comment_params)
-        @comment.attraction = @attraction        
         if @comment.save
             redirect_to attraction_comment_path(@comment)
         else

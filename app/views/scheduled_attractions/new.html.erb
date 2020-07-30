@@ -5,6 +5,8 @@
 <%= form_for [@itinerary, @scheduled_attraction] do |f| %>
     <%= f.label :time_of_day %><br>
     <%= f.text_field :time_of_day %><br><br>
+    
+    <%= f.hidden_field :itinerary_id, value: @itinerary.id %>
 
     <%= f.fields_for :attraction do |a| %>
         <%= a.label :name %><br>

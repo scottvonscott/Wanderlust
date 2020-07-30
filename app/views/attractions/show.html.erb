@@ -3,4 +3,15 @@
 <h4> <%= link_to @attraction.location, destination_path(@attraction.destination) %> </h4><br>
 
 <p> Description: <br><br> 
-<%= @attraction.description %> </p>
+<i><%= @attraction.description %></i> </p>
+<br>
+
+<p> Comments: </p> <br>
+<% if !@attraction.comments.nil? %>
+<% @attraction.comments.each do |c| %>
+    <p> - Posted by <%= c.user.full_name%> - </p>
+    <i><%= c.body %></i>
+    <% end %>
+<% end %>
+
+<h5><%= link_to "Post a Comment", new_attraction_comment_path(@attraction)%></h5>

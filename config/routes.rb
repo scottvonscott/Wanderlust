@@ -20,8 +20,11 @@ Rails.application.routes.draw do
     resources :scheduled_attractions, only: [:new, :create, :show, :edit]
   end
   resources :destinations
-  resources :attractions
-  resources :comments
+  resources :attractions do 
+    resources :comments, only: [:new, :create, :show, :edit]
+  end
+
+  # resources :comments
   # resources :scheduled_attractions
  
   

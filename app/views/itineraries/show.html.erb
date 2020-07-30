@@ -1,6 +1,11 @@
 <h1><%= @itinerary.trip.title %><br>
  <%= @itinerary.day%> </h1>
 
-<h3> Desitinations </h3>
 
-<h3> Attractions </h3>
+
+<h3> Planned Attractions </h3>
+
+<% @itinerary.scheduled_attractions.each do |a| %>
+    <%= a.attraction.name %>
+    <% end %>
+<%= link_to "Add New Attraction", new_itinerary_scheduled_attraction_path(@itinerary) %>

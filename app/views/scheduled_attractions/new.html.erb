@@ -1,0 +1,27 @@
+<h1> Add Attractions to <%=@itinerary.day %> </h1>
+
+<%= form_for [@itinerary, @scheduled_attraction] do |f| %>
+    <%= f.label :time_of_day %><br>
+    <%= f.text_field :time_of_day %><br><br>
+
+    <%= f.fields_for :attraction do |a| %>
+        <%= a.label :name %><br>
+        <%= a.text_field :name %><br>
+        <%= a.label :description %><br>
+        <%= a.text_area :description %><br>
+
+        <%= a.fields_for :destination do |d| %>
+            <%= d.label :city %><br>
+            <%= d.text_field :city %><br>
+            <%= d.label :country %><br>
+            <%= d.text_field :country %><br>
+            <%= d.label :continent %><br>
+            <%= d.text_field :continent %><br>
+            <%= d.label :primary_language %><br>
+            <%= d.text_field :primary_language %><br>
+            <% end %>
+        <% end %>
+
+        
+    <%= f.submit %>
+    <% end %>

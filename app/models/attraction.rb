@@ -4,6 +4,7 @@ class Attraction < ApplicationRecord
   has_many :bookmarks
   has_many :scheduled_attractions
   has_many :itineraries, through: :scheduled_attractions
+  accepts_nested_attributes_for :destination
 
   validates :name, :description, presence: true
   

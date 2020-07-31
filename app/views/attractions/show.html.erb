@@ -11,7 +11,7 @@
 <% if !@attraction.comments.nil? %>
 <% @attraction.comments.each do |c| %>
     <i><%= c.body %></i>
-    <p> - Posted By <%= c.user.full_name%></p>
+    <p> - Posted By <%= c.posted_by%></p>
     <% end %>
 <% end %>
 

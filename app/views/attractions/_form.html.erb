@@ -1,8 +1,21 @@
+<% if @attraction.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@attraction.errors.count, "error") %> prohibited this attraction from being saved:</h2>
+ 
+    <ul>
+    <% @attraction.errors.full_messages.each do |msg| %>
+      <li>- <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %><br>
+
+
 <%= form_for [@attraction] do |f| %>
-    <%= f.label :name %>
+    <%= f.label :name %><br>
     <%= f.text_field :name %><br>
-    <%= f.label :description %>
-    <%= f.text_area :description %><br>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %><br><br>
 
     <strong><%= f.label :destination, "Choose a Destination:" %></strong<br><br>
     <%= f.collection_select :destination_id, Destination.all, :id, :city, prompt: true %><br><br>

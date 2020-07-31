@@ -5,7 +5,7 @@ class Attraction < ApplicationRecord
   has_many :scheduled_attractions, :dependent => :destroy
   has_many :itineraries, through: :scheduled_attractions
   validates :name, :description, presence: true
-  validates :name, uniqueness: true
+  validates :name, uniqueness: { scope: :destination, message: "That attraction already exists in that location!"}
   accepts_nested_attributes_for :destination, reject_if: proc {|attributes| attributes['city'].blank?}
 
 
@@ -13,9 +13,14 @@ class Attraction < ApplicationRecord
     "#{self.destination.city}, #{self.destination.country}"
 end
 
-def location_order
-  att = Attraction.
-  att.each do |a|
-    a.destination
+def self.order_by_location
+    self.group('destination_id').order('name ASC')
+end
+
+# self.destinaton_attraction.joins(destination: :attraction).order('city ASC')
+
+
+
+  
 
 end

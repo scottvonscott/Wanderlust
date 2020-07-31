@@ -3,7 +3,7 @@ class Destination < ApplicationRecord
     has_many :itineraries, through: :attractions
 
     validates :city, :country, :continent, :primary_language, presence: true
-    validates :city, uniqueness: true
+    validates :city, uniqueness: { scope: :country, message: "That city already exists in that country"}
 
     # def alphabetical
     #     self.order(':city ASC')

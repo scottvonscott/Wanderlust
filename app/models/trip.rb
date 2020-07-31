@@ -1,6 +1,6 @@
 class Trip < ApplicationRecord
   belongs_to :user
-  has_many :itineraries
+  has_many :itineraries, :dependent => :destroy
   has_many :destations, through: :itineraries
 
   validates :title, presence: true

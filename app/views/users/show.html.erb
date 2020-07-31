@@ -14,6 +14,6 @@
 <h4> Your Comments </h4><br>
 <h2></h2><br>
 <% @user.comments.each do |c| %>
-    <p><%= c.attraction.name %></p>
+    <p><%= link_to c.attraction.name, attraction_path(c.attraction) %></p>
     <p><i>- <%= c.body %></i></p><h2></h2><br>
     <% end %>

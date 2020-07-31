@@ -2,7 +2,8 @@ class AttractionsController < ApplicationController
     before_action :set_attraction, only: [:show, :update, :edit, :destroy]
 
     def index
-        @attractions = Attraction.all
+        byebug
+        @attractions = Attraction.order(' ASC')
     end
 
     def new

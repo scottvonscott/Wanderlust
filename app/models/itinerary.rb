@@ -1,6 +1,6 @@
 class Itinerary < ApplicationRecord
   belongs_to :trip
-  has_many :scheduled_attractions
+  has_many :scheduled_attractions, :dependent => :destroy
   has_many :destinations, through: :scheduled_attractions
 
   # validates  :date, presence: true

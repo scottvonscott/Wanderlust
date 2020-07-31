@@ -26,6 +26,7 @@ class TripsController < ApplicationController
     end
 
     def update
+        # does not change the itinerary days!!!!!!
         if @trip.update(trip_params)
             redirect_to trip_path(@trip)
         else

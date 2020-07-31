@@ -1,7 +1,6 @@
 class AttractionsController < ApplicationController
     before_action :set_attraction, only: [:show, :update]
 
-   
     def index
         @attractions = Attraction.all
     end
@@ -12,7 +11,7 @@ class AttractionsController < ApplicationController
 
     def create
         @attraction = Attraction.new(attraction_params)
-        if @attraction.save
+        if  @attraction.save
             redirect_to attraction_path(@attraction)
         else
             render :new

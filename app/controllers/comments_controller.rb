@@ -7,15 +7,14 @@ class CommentsController < ApplicationController
     end
 
     def new
-        if params[:attraction_id]
+        if  params[:attraction_id]
             @comment = @attraction.comments.build
         end
     end
 
     def create
         @comment = current_user.comments.build(comment_params)
-        
-        if @comment.save
+        if  @comment.save
             redirect_to attraction_comment_path(@attraction, @comment)
         else
             render :new

@@ -7,17 +7,15 @@ class ScheduledAttractionsController < ApplicationController
     
         def new
             if params[:itinerary_id]
-            @scheduled_attraction = @itinerary.scheduled_attractions.build
-            @scheduled_attraction.build_attraction
-            @scheduled_attraction.attraction.build_destination
+                @scheduled_attraction = @itinerary.scheduled_attractions.build
+                @scheduled_attraction.build_attraction
+                @scheduled_attraction.attraction.build_destination
             end
         end
     
         def create
-            byebug
             scheduled_attraction = ScheduledAttraction.create(scheduled_attraction_params)
-            
-            if scheduled_attraction.valid?
+            if  scheduled_attraction.valid?
                 redirect_to trip_itinerary_path(@itinerary.trip, @itinerary)
             else
                 render :new
@@ -34,7 +32,7 @@ class ScheduledAttractionsController < ApplicationController
     
         def scheduled_attraction_params
             params.require(:scheduled_attraction).permit(:time_of_day, :itinerary_id, :attraction_id, attraction_attributes: [:destination_id, :name, :description, 
-             destination_attributes: [:city, :country, :continent, :primary_language]])
+            destination_attributes: [:city, :country, :continent, :primary_language]])
         end
 
         def set_scheduled_attraction
@@ -44,8 +42,6 @@ class ScheduledAttractionsController < ApplicationController
         def set_itinerary
             @itinerary = Itinerary.find_by(id: params[:itinerary_id])
         end
-
-    
 
     end
     

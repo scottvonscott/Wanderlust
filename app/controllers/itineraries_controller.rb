@@ -11,7 +11,7 @@ class ItinerariesController < ApplicationController
 
     def create
         @itinerary = Itinerary.new(itinerary_params)
-        if @itinerary.save
+        if  @itinerary.save
             redirect_to itinerary_path(@itinerary)
         else
             render :new

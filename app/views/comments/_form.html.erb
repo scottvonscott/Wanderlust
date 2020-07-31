@@ -1,10 +1,7 @@
 
-
 <%= form_for [@attraction, @comment] do |f| %>
     <%= f.label :body, 'Post A Comment Here!' %><br>
     <%= f.text_area :body %><br>
     <%= f.hidden_field :attraction_id, value: @attraction.id %>
-
-    
     <%= f.submit %>
     <% end %>

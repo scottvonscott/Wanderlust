@@ -14,7 +14,7 @@ class Attraction < ApplicationRecord
 end
 
 def self.order_by_location
-    self.group('destination_id').order('name ASC')
+    self.joins(:destination).order('city ASC')
 end
 
 # self.destinaton_attraction.joins(destination: :attraction).order('city ASC')

@@ -14,8 +14,8 @@ class ScheduledAttractionsController < ApplicationController
         end
     
         def create
-            scheduled_attraction = ScheduledAttraction.create(scheduled_attraction_params)
-            if  scheduled_attraction.valid?
+            @scheduled_attraction = ScheduledAttraction.create(scheduled_attraction_params)
+            if  @scheduled_attraction.valid?
                 redirect_to trip_itinerary_path(@itinerary.trip, @itinerary)
             else
                 render :new

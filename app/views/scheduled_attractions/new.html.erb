@@ -2,14 +2,35 @@
 <br>
 <h2></h2>
 
+<% if @scheduled_attraction.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@scheduled_attraction.errors.count, "error") %> prohibited this scheduled_attraction from being saved:</h2>
+ 
+    <ul>
+    <% @scheduled_attraction.errors.full_messages.each do |msg| %>
+      <li>- <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %><br>
+
+
 <%= form_for [@itinerary, @scheduled_attraction] do |f| %>
-    <strong><%= f.label :time_of_day, "Scheduled Time of Day:" %></strong><br>
-    <%= f.text_field :time_of_day %><br><br>
+    <strong><%= f.label :time_of_day, "Scheduled Time of Day:" %></strong><br><br>
+    <%= f.label :time_of_day, "morning" %>
+    <%= f.radio_button :time_of_day, 'morning' %>
+    <%= f.label :time_of_day, "afternoon" %>
+    <%= f.radio_button :time_of_day, 'afternoon' %>
+    <%= f.label :time_of_day, "evening" %>
+    <%= f.radio_button :time_of_day, 'evening' %>
+    <br><br>
+    <h2></h2>
+
 
     <%= f.hidden_field :itinerary_id, value: @itinerary.id %>
 
 
-    <strong><%= f.label :attraction, "Choose an Attraction:" %></strong<br><br>
+    <strong><%= f.label :attraction, "Choose an Attraction:" %></strong<br><br><br>
     <%= f.collection_select :attraction_id, Attraction.all, :id, :name, prompt: true %><br>
 
     <%= f.fields_for :attraction do |a| %><br>
@@ -19,18 +40,20 @@
         <%= a.label :description, "Attraction Description:" %><br>
         <%= a.text_area :description %><br><br>
 
-        <strong><%= a.label :destination, "Choose a Destination:" %></strong<br><br>
+        <h2></h2>
+
+        <strong><%= a.label :destination, "Choose a Destination:" %></strong<br><br><br>
     <%= a.collection_select :destination_id, Destination.all, :id, :city, prompt: true %><br><br>
     
    <%= a.fields_for :destination do |d| %>
             <strong><p> - Or Enter a New Destination</p></strong>
-            <%= d.label :city %><br>
+            <%= d.label :city %>:<br>
             <%= d.text_field :city %><br>
-            <%= d.label :country %><br>
+            <%= d.label :country %>:<br>
             <%= d.text_field :country %><br>
-            <%= d.label :continent %><br>
+            <%= d.label :continent %>:<br>
             <%= d.text_field :continent %><br>
-            <%= d.label :primary_language %><br>
+            <%= d.label :primary_language %>:<br>
             <%= d.text_field :primary_language %><br>
             <% end %>
         <% end %>
@@ -38,3 +61,6 @@
         
     <%= f.submit %>
     <% end %>
+
+
+    

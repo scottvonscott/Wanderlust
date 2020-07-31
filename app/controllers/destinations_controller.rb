@@ -1,5 +1,5 @@
 class DestinationsController < ApplicationController
-    before_action :set_destination, only: [:show, :update]
+    before_action :set_destination, only: [:show, :update, :edit, :destroy]
 
     def index
         @destinations = Destination.all
@@ -21,7 +21,20 @@ class DestinationsController < ApplicationController
     def show
     end
 
+    def edit
+    end
+
+    def update
+        if @destination.update(destination_params)
+            redirect_to destination_path(@destination)
+        else
+            render :edit
+        end
+    end
+
     def destroy
+        @destination.destroy
+        redirect_to destinations_path
     end
 
     private

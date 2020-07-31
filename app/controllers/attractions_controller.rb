@@ -1,5 +1,5 @@
 class AttractionsController < ApplicationController
-    before_action :set_attraction, only: [:show, :update]
+    before_action :set_attraction, only: [:show, :update, :edit, :destroy]
 
     def index
         @attractions = Attraction.all
@@ -21,7 +21,20 @@ class AttractionsController < ApplicationController
     def show
     end
 
+    def edit
+    end
+
+    def update
+        if @attraction.update(attraction_params)
+            redirect_to attraction_path(@attraction)
+        else
+            render :edit
+        end
+    end
+
     def destroy
+        @attraction.destroy
+        redirect_to attractions_path
     end
 
     private

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-    before_action :set_comment, only: [:show, :update]
-    before_action :set_attraction, only: [:new, :create]
+    before_action :set_comment, only: [:show, :update, :edit, :destroy]
+    before_action :set_attraction, only: [:new, :create, :edit, :update, :destroy]
 
     def index
         @comments = Comment.all
@@ -24,7 +24,20 @@ class CommentsController < ApplicationController
     def show
     end
 
+    def edit
+    end
+
+    def update
+        if @comment.update(comment_params)
+            redirect_to comment_path(@comment)
+        else
+            render :edit
+        end
+    end
+
     def destroy
+        @comment.destroy
+        redirect_to comments_path
     end
 
     private

@@ -19,14 +19,17 @@ class ItinerariesController < ApplicationController
     end
 
     def show
-        # byebug
+    end
+
+    def edit
+    end
+
+    def update
     end
 
     def destroy
     end
-
-
-
+    
     private
 
     def itinerary_params

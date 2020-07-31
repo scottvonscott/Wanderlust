@@ -1,6 +1,6 @@
 class ScheduledAttractionsController < ApplicationController
-        before_action :set_scheduled_attraction, only: [:show]
-        before_action :set_itinerary, only: [:new, :create]
+        before_action :set_scheduled_attraction, only: [:show, :edit, :update, :destroy]
+        before_action :set_itinerary, only: [:new, :create, :update, :edit, :destroy]
     
         def index
         end
@@ -24,8 +24,22 @@ class ScheduledAttractionsController < ApplicationController
 
         def show
         end
+
+        def edit
+        end
+
+        def update
+            if @scheduled_attraction.update(scheduled_attraction_params)
+                redirect_to itinerary_path(@itinerary.trip, @itinerary)
+            else
+                render :edit
+            end
+        end
+
     
         def destroy
+            @scheduled_attraction.destroy
+            redirect_to itinerary_path(@itinerary.trip, @itinerary)
         end
     
         private

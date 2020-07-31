@@ -28,7 +28,7 @@ class AttractionsController < ApplicationController
     private
 
     def attraction_params
-        params.require(:attraction).permit(:name, :description)
+        params.require(:attraction).permit(:name, :description, :destination_id)
     end
 
     def set_attraction

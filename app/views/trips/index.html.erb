@@ -1,9 +1,9 @@
-<h1> All Trips </h1>
+<h1> My Trips </h1>
 
 <h4><%= link_to "Create New Trip", new_trip_path %></h4>
 <br>
 <h2></h2>
 
-<% @trips.each do |t| %>
+<% current_user.trips.each do |t| %>
   <h3><%= link_to t.title, trip_path(t) %></h3><br><br>
     <% end %>

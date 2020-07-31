@@ -13,10 +13,10 @@ class CommentsController < ApplicationController
     end
 
     def create
-        byebug
         @comment = current_user.comments.build(comment_params)
+        
         if @comment.save
-            redirect_to attraction_comment_path(@comment)
+            redirect_to attraction_comment_path(@attraction, @comment)
         else
             render :new
         end

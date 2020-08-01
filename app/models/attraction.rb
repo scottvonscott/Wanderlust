@@ -9,18 +9,12 @@ class Attraction < ApplicationRecord
   accepts_nested_attributes_for :destination, reject_if: proc {|attributes| attributes['city'].blank?}
 
 
-  def location
+def location
     "#{self.destination.city}, #{self.destination.country}"
 end
 
 def self.order_by_location
     self.joins(:destination).order('city ASC')
 end
-
-# self.destinaton_attraction.joins(destination: :attraction).order('city ASC')
-
-
-
-  
 
 end

@@ -6,7 +6,6 @@ class Trip < ApplicationRecord
   validates :title, presence: true
   validates :days_duration, numericality: true
   validates :days_duration, numericality: {greater_than: 0, message: "must be at least a day trip!"}
-# this validation isnt working
 
 
 def days_to_plan

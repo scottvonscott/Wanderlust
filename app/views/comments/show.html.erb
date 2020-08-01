@@ -1,8 +1,8 @@
-<h3><%=@comment.attraction.name %></h3><br>
+<h3><%=link_to @comment.attraction.name, attraction_path(@attraction) %></h3><br>
 <h2></h2>
 
 <p><i> <%= @comment.body %></i></p>
 <p> - Posted By <%= @comment.user.full_name %> 
-<% if current_user %>
+<% if @comment.user == current_user %>
 <p> <%=link_to "Edit My Comment", edit_attraction_comment_path(@attraction, @comment) %> - <%= link_to("Delete My Comment", attraction_comment_path(@attraction, @comment), method: 'delete' ) %></h5>
 <% end %>

@@ -14,7 +14,7 @@
 
 <% if !@attraction.comments.nil? %>
 <% @attraction.comments.each do |c| %>
-    <i><%= c.body %></i>
+    <i><%= link_to c.body, attraction_comment_path(@attraction, c) %></i>
     <p> - Posted By <%= c.posted_by%></p>
     <% end %>
 <% end %>

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
     before_action :set_comment, only: [:show, :update, :edit, :destroy]
-    before_action :set_attraction, only: [:new, :create, :edit, :update, :destroy]
+    before_action :set_attraction, only: [:new, :show, :create, :edit, :update, :destroy]
     before_action :redirect_if_not_owner, only: [:edit, :update, :destroy]
 
     def index
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
 
     def update
         if @comment.update(comment_params)
-            redirect_to comment_path(@comment)
+            redirect_to attraction_comment_path(@attraction, @comment)
         else
             render :edit
         end
@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
 
     def destroy
         @comment.destroy
-        redirect_to comments_path
+        redirect_to attraction_path(@attraction)
     end
 
     private
@@ -56,7 +56,7 @@ class CommentsController < ApplicationController
     end
 
     def redirect_if_not_owner
-        if @trip.user != current_user
+        if @comment.user != current_user
             redirect_to user_path(current_user), alert: "You can't edit this!"
         end
     end

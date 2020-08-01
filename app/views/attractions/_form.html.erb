@@ -1,15 +1,4 @@
-<% if @attraction.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@attraction.errors.count, "error") %> prohibited this attraction from being saved:</h2>
- 
-    <ul>
-    <% @attraction.errors.full_messages.each do |msg| %>
-      <li>- <%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %><br>
-
+<%= render partial: '/shared/errors', locals: {obj: @attraction}%>
 
 <%= form_for [@attraction] do |f| %>
     <%= f.label :name %><br>
@@ -17,7 +6,6 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %><br><br>
 
-    # Nested form for destination if not nested route
     <% if @attraction.destination_id.nil? %>
     <strong><%= f.label :destination, "Choose a Destination:" %></strong<br><br>
     <%= f.collection_select :destination_id, Destination.all, :id, :city, prompt: true %><br><br>
@@ -33,12 +21,12 @@
         <%= d.label :primary_language %><br>
         <%= d.text_field :primary_language %><br>
         <% end %>
-
     <%= f.submit %>
+   
     <% else %>
     <%= f.hidden_field :destination_id, value: @destination.id %>
-
     <%= f.submit %>
     <% end %>
+
     <% end %>
 

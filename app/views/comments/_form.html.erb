@@ -1,3 +1,5 @@
+<%= render partial: '/shared/errors', locals: {obj: @comment}%>
+
 
 <%= form_for [@attraction, @comment] do |f| %>
     <%= f.label :body, 'Post A Comment Here!' %><br>

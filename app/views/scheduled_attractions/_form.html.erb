@@ -1,4 +1,4 @@
-<%= render partial: '/shared/errors', locals {obj: @scheduled_attraction}%>
+<%= render partial: '/shared/errors', locals: {obj: @scheduled_attraction}%>
 
 <%= form_for [@itinerary, @scheduled_attraction] do |f| %>
     <strong><%= f.label :time_of_day, "Scheduled Time of Day:" %></strong><br><br>

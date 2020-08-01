@@ -1,0 +1,48 @@
+<%= render partial: '/shared/errors', locals {obj: @scheduled_attraction}%>
+
+<%= form_for [@itinerary, @scheduled_attraction] do |f| %>
+    <strong><%= f.label :time_of_day, "Scheduled Time of Day:" %></strong><br><br>
+    <%= f.label :time_of_day, "Morning" %>
+    <%= f.radio_button :time_of_day, 'Morning' %>
+    <%= f.label :time_of_day, "Afternoon" %>
+    <%= f.radio_button :time_of_day, 'Afternoon' %>
+    <%= f.label :time_of_day, "Evening" %>
+    <%= f.radio_button :time_of_day, 'Evening' %>
+    <br><br>
+    <h2></h2>
+
+
+    <%= f.hidden_field :itinerary_id, value: @itinerary.id %>
+
+
+    <strong><%= f.label :attraction, "Choose an Attraction:" %></strong<br><br><br>
+    <%= f.collection_select :attraction_id, Attraction.all, :id, :name, prompt: true %><br>
+
+    <%= f.fields_for :attraction do |a| %><br>
+        <strong><p> - Or Enter a New Attraction</p></strong>
+        <%= a.label :name, "Attraction Name:" %><br>
+        <%= a.text_field :name %><br>
+        <%= a.label :description, "Attraction Description:" %><br>
+        <%= a.text_area :description %><br><br>
+
+        <h2></h2>
+
+        <strong><%= a.label :destination, "Choose a Destination:" %></strong<br><br><br>
+    <%= a.collection_select :destination_id, Destination.all, :id, :city, prompt: true %><br><br>
+    
+   <%= a.fields_for :destination do |d| %>
+            <strong><p> - Or Enter a New Destination</p></strong>
+            <%= d.label :city %>:<br>
+            <%= d.text_field :city %><br>
+            <%= d.label :country %>:<br>
+            <%= d.text_field :country %><br>
+            <%= d.label :continent %>:<br>
+            <%= d.text_field :continent %><br>
+            <%= d.label :primary_language %>:<br>
+            <%= d.text_field :primary_language %><br>
+            <% end %>
+        <% end %>
+
+        
+    <%= f.submit %>
+    <% end %>

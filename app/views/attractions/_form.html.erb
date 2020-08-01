@@ -24,7 +24,7 @@
     <%= f.submit %>
    
     <% else %>
-    <%= f.hidden_field :destination_id, value: @destination.id %>
+    <%= f.hidden_field :destination_id, value: @attraction.destination.id %>
     <%= f.submit %>
     <% end %>
 

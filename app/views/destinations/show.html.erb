@@ -6,7 +6,7 @@
 <h2></h2>
 
 <h3> Attractions in <%= @destination.city %>: </h3>
-<h3> <% @destination.attractions.each do |a| %></h3>
-    <%= link_to a.name, attraction_path(a) %><br>
+ <% @destination.attractions.each do |a| %>
+    <h3><%= link_to a.name, attraction_path(a) %><br></h3>
     <% end %>
 

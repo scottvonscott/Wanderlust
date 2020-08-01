@@ -5,9 +5,13 @@
 
 <p> Description: <br><br> 
 <i><%= @attraction.description %></i> </p>
-<br>
 
-<p> Comments: </p> <br>
+<br><h2></h2><br>
+
+<p> Comments: </p>
+
+<h5><%= link_to "Post a New Comment", new_attraction_comment_path(@attraction)%></h5>
+
 <% if !@attraction.comments.nil? %>
 <% @attraction.comments.each do |c| %>
     <i><%= c.body %></i>
@@ -15,4 +19,3 @@
     <% end %>
 <% end %>
 
-<h5><%= link_to "Post a Comment", new_attraction_comment_path(@attraction)%></h5>

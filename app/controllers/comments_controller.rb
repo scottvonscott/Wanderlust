@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
     before_action :set_comment, only: [:show, :update, :edit, :destroy]
     before_action :set_attraction, only: [:new, :create, :edit, :update, :destroy]
+    before_action :redirect_if_not_owner, only: [:edit, :update, :destroy]
 
     def index
         @comments = Comment.all
@@ -52,6 +53,12 @@ class CommentsController < ApplicationController
 
     def set_attraction
         @attraction = Attraction.find_by(id: params[:attraction_id])
+    end
+
+    def redirect_if_not_owner
+        if @trip.user != current_user
+            redirect_to user_path(current_user), alert: "You can't edit this!"
+        end
     end
     
 end

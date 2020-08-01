@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
     before_action :set_trip, only: [:show, :update, :edit, :destroy]
+    before_action :redirect_if_not_owner
 
     def index
         @trips = Trip.all
@@ -47,6 +48,12 @@ class TripsController < ApplicationController
 
     def set_trip
         @trip = Trip.find(params[:id])
+    end
+
+    def redirect_if_not_owner
+        if @trip.user != current_user
+            redirect_to user_path(current_user), alert: "You can't edit this!"
+        end
     end
 
 

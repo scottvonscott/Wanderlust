@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
     before_action :set_trip, only: [:show, :update, :edit, :destroy]
-    before_action :redirect_if_not_owner
+    before_action :redirect_if_not_owner, only: [:show, :update, :edit, :destroy]
 
     def index
         @trips = Trip.all

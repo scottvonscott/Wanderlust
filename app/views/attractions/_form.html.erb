@@ -17,6 +17,8 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %><br><br>
 
+    # Nested form for destination if not nested route
+    <% if @attraction.destination_id.nil? %>
     <strong><%= f.label :destination, "Choose a Destination:" %></strong<br><br>
     <%= f.collection_select :destination_id, Destination.all, :id, :city, prompt: true %><br><br>
     
@@ -33,5 +35,10 @@
         <% end %>
 
     <%= f.submit %>
+    <% else %>
+    <%= f.hidden_field :destination_id, value: @destination.id %>
+
+    <%= f.submit %>
+    <% end %>
     <% end %>
 

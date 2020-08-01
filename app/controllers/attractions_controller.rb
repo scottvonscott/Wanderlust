@@ -1,5 +1,6 @@
 class AttractionsController < ApplicationController
     before_action :set_attraction, only: [:show, :update, :edit, :destroy]
+    before_action :set_destination, only: [:new, :show, :create, :update, :edit]
 
     def index
     
@@ -7,11 +8,15 @@ class AttractionsController < ApplicationController
     end
 
     def new
-        @attraction = Attraction.new
+        if  params[:destination_id]
+            @attraction= @destination.attractions.build
+        else
+            @attraction = Attraction.new
+        end
     end
 
     def create
-        @attraction = Attraction.new(attraction_params)
+        @attraction = Attraction.create(attraction_params)
         if  @attraction.save
             redirect_to attraction_path(@attraction)
         else
@@ -46,6 +51,10 @@ class AttractionsController < ApplicationController
 
     def set_attraction
         @attraction = Attraction.find_by(id: params[:id])
+    end
+
+    def set_destination
+        @destination = Destination.find_by(id: params[:destination_id])
     end
 
     

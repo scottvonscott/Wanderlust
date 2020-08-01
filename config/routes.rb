@@ -20,7 +20,10 @@ Rails.application.routes.draw do
   resources :itineraries do 
     resources :scheduled_attractions, only: [:new, :create, :show, :edit]
   end
-  resources :destinations
+  resources :destinations do
+    resources :attractions, only: [:new, :create, :show, :edit]
+  end
+
   resources :attractions do 
     resources :comments, only: [:new, :create, :show, :edit]
   end

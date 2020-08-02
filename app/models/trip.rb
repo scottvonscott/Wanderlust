@@ -7,16 +7,12 @@ class Trip < ApplicationRecord
   validates :days_duration, numericality: true
   validates :days_duration, numericality: {greater_than: 0, message: "must be at least a day trip!"}
 
-
-    
-
-
 def days_to_plan
  d = 0
- while self.days_duration > d
+  while self.days_duration > d
     d += 1
     self.itineraries.build(day_of_trip: d)
-end
+  end
   self.save 
 end
 
@@ -28,14 +24,14 @@ def update_days(new_days)
   end
 end
 
-  def add_days(days)
-    last = self.itineraries.last.day_of_trip
-    while last < days.to_i
-      last += 1
-      self.itineraries.build(day_of_trip: last)
-    end
-    self.save
+def add_days(days)
+  last = self.itineraries.last.day_of_trip
+  while last < days.to_i
+    last += 1
+    self.itineraries.build(day_of_trip: last)
   end
+  self.save
+end
 
   def subtract_days(days)
     last = self.itineraries.last.day_of_trip
@@ -44,5 +40,5 @@ end
       self.itineraries.last.delete
     end
     self.save
-  end
-end
+    end
+ end

@@ -10,9 +10,7 @@
     <br><br>
     <h2></h2>
 
-
     <%= f.hidden_field :itinerary_id, value: @itinerary.id %>
-
 
     <strong><%= f.label :attraction, "Choose an Attraction:" %></strong<br><br><br>
     <%= f.collection_select :attraction_id, Attraction.all, :id, :name, prompt: true %><br>

@@ -13,14 +13,13 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show', as: 'user'
 
 
-  #gonna need nested here
   resources :trips do
     resources :itineraries, only: [:show]
   end
-  resources :itineraries do 
+  resources :itineraries, only: [:show, :edit, :update] do 
     resources :scheduled_attractions, only: [:new, :create, :show, :edit, :update, :destroy]
   end
-  resources :destinations do
+  resources :destinations, only: [:index, :show] do
     resources :attractions, only: [:new, :create, :show, :edit, :update, :destroy]
   end
 

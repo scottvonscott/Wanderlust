@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :redirect_if_not_owner, only: [:show]
     
     def new
         @user = User.new
@@ -22,6 +23,12 @@ private
 
     def user_params
         params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    end
+
+    def redirect_if_not_owner
+        if @user != current_user
+            redirect_to user_path(current_user), alert: "That's not your profile!"
+        end
     end
    
 

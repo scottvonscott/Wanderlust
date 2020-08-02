@@ -17,4 +17,29 @@ end
   self.save 
 end
 
+def update_days(new_days)
+   if self.days_duration < new_days.to_i
+    add_days(new_days)
+   else
+    subtract_days(new_days)
+  end
+end
+
+  def add_days(days)
+    last = self.itineraries.last.day_of_trip
+    while last < days.to_i
+      last += 1
+      self.itineraries.build(day_of_trip: last)
+    end
+    self.save
+  end
+
+  def subtract_days(days)
+    last = self.itineraries.last.day_of_trip
+    while last > days.to_i
+      last -= 1
+      self.itineraries.last.delete
+    end
+    self.save
+  end
 end

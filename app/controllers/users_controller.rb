@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-    before_action :redirect_if_not_owner, only: [:show]
     
     def new
         @user = User.new

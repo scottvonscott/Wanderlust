@@ -29,7 +29,6 @@ class TripsController < ApplicationController
     def update
         @trip.update_days(params[:trip][:days_duration])
         if @trip.update(trip_params)
-            
             redirect_to trip_path(@trip)
         else
             render :edit

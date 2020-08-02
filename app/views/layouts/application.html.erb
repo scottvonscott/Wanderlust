@@ -28,15 +28,14 @@
   <h6>Wanderlust</h6>
       <h2></h2>
       <h3>
-          <%= link_to "My Trips", trips_path %> |
           <%= link_to "Destinations", destinations_path %> |
           <%= link_to "Attractions", attractions_path %>
+          <% if logged_in? %>
+          | <%= link_to "My Trips", trips_path %>
+          <% else %>
+          <% end %>
         </h3>
-
-
-
-
-
+        
       <%= csrf_meta_tags %>
       <%= csp_meta_tag %>
       <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>

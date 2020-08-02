@@ -4,5 +4,5 @@
 <p><i> <%= @comment.body %></i></p>
 <p> - Posted By <%= @comment.user.full_name %> 
 <% if @comment.user == current_user %>
-<p> <%=link_to "Edit My Comment", edit_attraction_comment_path(@attraction, @comment) %> - <%= link_to("Delete My Comment", attraction_comment_path(@attraction, @comment), method: 'delete' ) %></h5>
+<p> <%= render partial: '/shared/edit_delete_links', locals: {obj1: @attraction, obj2: @comment} %></h5>
 <% end %>

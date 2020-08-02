@@ -7,20 +7,8 @@
     <%= f.text_area :description %><br><br>
 
     <% if @attraction.destination_id.nil? %>
-    <strong><%= f.label :destination, "Choose a Destination:" %></strong<br><br>
-    <%= f.collection_select :destination_id, Destination.all, :id, :city, prompt: true %><br><br>
+    <%= render partial: '/destinations/form', locals: {obj: f}%>
     
-    <%= f.fields_for :destination do |d| %>
-        <strong><p> - Or Enter a New Destination</p></strong>
-        <%= d.label :city %><br>
-        <%= d.text_field :city %><br>
-        <%= d.label :country %><br>
-        <%= d.text_field :country %><br>
-        <%= d.label :continent %><br>
-        <%= d.text_field :continent %><br>
-        <%= d.label :primary_language %><br>
-        <%= d.text_field :primary_language %><br>
-        <% end %>
     <%= f.submit %>
    
     <% else %>

@@ -8,6 +8,9 @@ class Trip < ApplicationRecord
   validates :days_duration, numericality: {greater_than: 0, message: "must be at least a day trip!"}
 
 
+    
+
+
 def days_to_plan
  d = 0
  while self.days_duration > d

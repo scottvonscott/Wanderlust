@@ -1,5 +1,4 @@
 <%= render partial: '/shared/errors', locals: {obj: @scheduled_attraction}%>
-
 <%= form_for [@itinerary, @scheduled_attraction] do |f| %>
     <strong><%= f.label :time_of_day, "Scheduled Time of Day:" %></strong><br><br>
     <%= f.label :time_of_day, "Morning" %>
@@ -27,22 +26,9 @@
 
         <h2></h2>
 
-        <strong><%= a.label :destination, "Choose a Destination:" %></strong<br><br><br>
-    <%= a.collection_select :destination_id, Destination.all, :id, :city, prompt: true %><br><br>
-    
-   <%= a.fields_for :destination do |d| %>
-            <strong><p> - Or Enter a New Destination</p></strong>
-            <%= d.label :city %>:<br>
-            <%= d.text_field :city %><br>
-            <%= d.label :country %>:<br>
-            <%= d.text_field :country %><br>
-            <%= d.label :continent %>:<br>
-            <%= d.text_field :continent %><br>
-            <%= d.label :primary_language %>:<br>
-            <%= d.text_field :primary_language %><br>
-            <% end %>
-        <% end %>
+        <%= render partial: '/destinations/form', locals: {obj: a}%>
 
-        
+
+    <% end %>
     <%= f.submit %>
     <% end %>
